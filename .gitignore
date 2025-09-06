@@ -1,0 +1,29 @@
+# Virtual environment
+venv/
+env/
+ENV/
+
+# Environment variables
+.env
+config.env
+
+# Output files - все файлы в папке output, кроме .gitkeep
+output/*
+!output/.gitkeep
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

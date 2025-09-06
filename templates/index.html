@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎨 FusionBrain Image Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🎨 FusionBrain Image Generator</h1>
+            <p>Создавайте уникальные изображения с помощью ИИ</p>
+        </header>
+
+        <main class="main-content">
+            <div class="generation-form">
+                <div class="form-group">
+                    <label for="prompt">📝 Описание изображения:</label>
+                    <textarea 
+                        id="prompt" 
+                        placeholder="Введите описание изображения... Например: 'Красивый закат над морем'"
+                        rows="3"
+                        maxlength="1000"
+                    ></textarea>
+                    <div class="char-counter">
+                        <span id="charCount">0</span>/1000 символов
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>📐 Размер изображения:</label>
+                    <div class="size-options">
+                        <div class="size-option" data-width="512" data-height="512">
+                            <div class="size-preview">512×512</div>
+                            <div class="size-label">Квадрат (малый)</div>
+                        </div>
+                        <div class="size-option" data-width="768" data-height="768">
+                            <div class="size-preview">768×768</div>
+                            <div class="size-label">Квадрат (средний)</div>
+                        </div>
+                        <div class="size-option active" data-width="1024" data-height="1024">
+                            <div class="size-preview">1024×1024</div>
+                            <div class="size-label">Квадрат (большой)</div>
+                        </div>
+                        <div class="size-option" data-width="512" data-height="768">
+                            <div class="size-preview">512×768</div>
+                            <div class="size-label">Портрет</div>
+                        </div>
+                        <div class="size-option" data-width="768" data-height="512">
+                            <div class="size-preview">768×512</div>
+                            <div class="size-label">Пейзаж</div>
+                        </div>
+                        <div class="size-option" data-width="1024" data-height="768">
+                            <div class="size-preview">1024×768</div>
+                            <div class="size-label">Широкий</div>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="generateBtn" class="generate-btn">
+                    <i class="fas fa-magic"></i>
+                    Сгенерировать изображение
+                </button>
+            </div>
+
+            <div class="result-section" id="resultSection" style="display: none;">
+                <div class="status-info">
+                    <div class="status-indicator" id="statusIndicator">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <span id="statusText">Генерируем изображение...</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+
+                <div class="generated-image-container" id="imageContainer" style="display: none;">
+                    <div class="image-wrapper">
+                        <img id="generatedImage" alt="Сгенерированное изображение">
+                        <div class="image-overlay">
+                            <button class="action-btn copy-btn" id="copyBtn" title="Копировать изображение">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                            <button class="action-btn download-btn" id="downloadBtn" title="Скачать изображение">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="image-info">
+                        <div class="image-details">
+                            <span id="imageSize"></span>
+                            <span id="imageFilename"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Powered by <a href="https://fusionbrain.ai/" target="_blank">FusionBrain AI</a></p>
+        </footer>
+    </div>
+
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <i class="toast-icon"></i>
+            <span class="toast-message"></span>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
